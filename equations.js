@@ -28,7 +28,7 @@ function median(numbers) {
 
 function numberCounter(array) {
     return array.reduce(function (obj, nextNum) {
-        obj[nextNum] = (obj(nextNum) || 0) + 1;
+        obj[nextNum] = (obj[nextNum] || 0)  + 1;
         return obj;
     }, {});
 }
@@ -47,4 +47,19 @@ function mode(array){
     return mostFrequent;
 }
 
-module.exports = {mean,median,mode,numberCounter}
+function stringToNum(array) {
+    let result = [];
+  
+    for (let i = 0; i < array.length; i++) {
+      let num = Number(array[i]);
+  
+      if (Number.isNaN(num)) {
+        return new Error(`${array[i]} is not a valid number.`);
+      }
+  
+      result.push(num);
+    }
+    return result;
+  }
+
+module.exports = {mean,median,mode,numberCounter,stringToNum}
